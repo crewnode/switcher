@@ -8,6 +8,7 @@ import 'package:crewnode_switcher/utils/colours.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class IntroductionPage extends StatelessWidget {
+  static const String routeName = "/";
   final _pageViewController = new PageController(initialPage: 0);
 
   @override
@@ -58,113 +59,115 @@ class IntroductionPage extends StatelessWidget {
                     topRight: Radius.circular(25),
                   )),
               child: SafeArea(
-                child: PageView.builder(
-                  physics: NeverScrollableScrollPhysics(),
-                  controller: _pageViewController,
-                  itemBuilder: (context, index) {
-                    return Column(
-                      children: <Widget>[
-                        SizedBox(height: 25),
-                        Text(
-                          IntroItems.introData[index]['title'],
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: ScreenUtil().setSp(30),
-                            fontWeight: FontWeight.bold,
-                          ),
+                  child: PageView.builder(
+                physics: NeverScrollableScrollPhysics(),
+                controller: _pageViewController,
+                itemBuilder: (context, index) {
+                  return Column(
+                    children: <Widget>[
+                      SizedBox(height: 25),
+                      Text(
+                        IntroItems.introData[index]['title'],
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: ScreenUtil().setSp(30),
+                          fontWeight: FontWeight.bold,
                         ),
-                        SizedBox(
-                          height: 11,
+                      ),
+                      SizedBox(
+                        height: 11,
+                      ),
+                      Text(
+                        IntroItems.introData[index]['text'],
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: Colors.white54,
+                          fontSize: ScreenUtil().setSp(15),
                         ),
-                        Text(
-                          IntroItems.introData[index]['text'],
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            color: Colors.white54,
-                            fontSize: ScreenUtil().setSp(15),
-                          ),
-                        ),
-                        Spacer(),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 25),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: List<Widget>.generate(
-                              IntroItems.introData.length,
-                              (indicator) => CupertinoButton(
-                                onPressed: () {
-                                  _pageViewController.animateToPage(indicator,
+                      ),
+                      Spacer(),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 25),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: List<Widget>.generate(
+                            IntroItems.introData.length,
+                            (indicator) => CupertinoButton(
+                              onPressed: () {
+                                _pageViewController.animateToPage(indicator,
                                     duration: Duration(milliseconds: 500),
                                     curve: Curves.ease);
-                                },
-                                child: Column(
-                                  children: [
-                                    Text(IntroItems.introData[indicator]['title'], style: TextStyle(color: Colors.grey, fontSize: 10)),
-                                    SizedBox(height: 5),
-                                    Container(
-                                      height: 10.0,
-                                      width: 10.0,
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(10.0),
-                                        color: indicator != index
-                                            ? Color(0xff3A4653)
-                                            : Color(0xffedf1f9),
-                                      ),
-                                    )
-                                  ]
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                        FlatButton(
-                          onPressed: () {
-                            if (index < IntroItems.introData.length - 1) {
-                              _pageViewController.animateToPage(index + 1,
-                                  duration: Duration(milliseconds: 500),
-                                  curve: Curves.ease);
-                            } else {
-                              print("Go to dashboard!");
-                              Navigator.pushReplacement(context, MaterialPageRoute(
-                                builder: (context) => BlocProvider<DashboardCubit>(
-                                  create: (context) => DashboardCubit(),
-                                  child: Dashboard()
+                              },
+                              child: Column(children: [
+                                Text(IntroItems.introData[indicator]['title'],
+                                    style: TextStyle(
+                                        color: Colors.grey, fontSize: 10)),
+                                SizedBox(height: 5),
+                                Container(
+                                  height: 10.0,
+                                  width: 10.0,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(10.0),
+                                    color: indicator != index
+                                        ? Color(0xff3A4653)
+                                        : Color(0xffedf1f9),
+                                  ),
                                 )
-                              ));
-                              // TODO: Remove ability to go back
-                            }
-                          },
-                          color: index != IntroItems.introData.length - 1
-                              ? Colors.transparent
-                              : Color(0xff2E4053),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(18.0),
-                            side: BorderSide(
-                              color: Color(0xff485960),
-                            ),
-                          ),
-                          child: Container(
-                            width: ScreenUtil().setWidth(160),
-                            height: 40,
-                            alignment: Alignment.center,
-                            child: Text(
-                              index != IntroItems.introData.length - 1 ? 'Next' : 'Done',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: ScreenUtil().setSp(16),
-                                fontWeight: FontWeight.bold,
-                              ),
+                              ]),
                             ),
                           ),
                         ),
-                        SizedBox(height: 25)
-                      ],
-                    );
-                  },
-                  itemCount: IntroItems.introData.length,
-                )
-              ),
+                      ),
+                      FlatButton(
+                        onPressed: () {
+                          if (index < IntroItems.introData.length - 1) {
+                            _pageViewController.animateToPage(index + 1,
+                                duration: Duration(milliseconds: 500),
+                                curve: Curves.ease);
+                          } else {
+                            print("Go to dashboard!");
+                            Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        BlocProvider<DashboardCubit>(
+                                            create: (context) =>
+                                                DashboardCubit(),
+                                            child: Dashboard())));
+                          }
+                        },
+                        color: index != IntroItems.introData.length - 1
+                            ? Colors.transparent
+                            : Color(0xff2E4053),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(18.0),
+                          side: BorderSide(
+                            color: Color(0xff485960),
+                          ),
+                        ),
+                        child: Container(
+                          width: ScreenUtil().setWidth(160),
+                          height: 40,
+                          alignment: Alignment.center,
+                          child: Text(
+                            index != IntroItems.introData.length - 1
+                                ? 'Next'
+                                : 'Done',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: ScreenUtil().setSp(16),
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: 25)
+                    ],
+                  );
+                },
+                itemCount: IntroItems.introData.length,
+              )),
             ),
           )
         ],

@@ -1,4 +1,5 @@
 import 'package:crewnode_switcher/entry.dart';
+import 'package:crewnode_switcher/pages/introduction.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -12,19 +13,11 @@ class CrewNode extends StatelessWidget {
       title: 'CrewNode',
       debugShowCheckedModeBanner: false,
       debugShowMaterialGrid: false,
-      initialRoute: '/welcome',
+      initialRoute: IntroductionPage.routeName,
+      routes: <String, WidgetBuilder>{
+        IntroductionPage.routeName: (context) => IntroductionPage(),
+      },
       onGenerateRoute: RouteGenerator.generateRoute,
-      // routes: {
-      //   '/welcome': (context) {
-      //     return IntroductionPage();
-      //   },
-      //   '/': (context) {
-      //     return BlocProvider(
-      //       create: (_) => DashboardCubit(),
-      //       child: Dashboard()
-      //     );
-      //   } 
-      // }
     );
   }
 }
