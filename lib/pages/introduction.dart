@@ -25,7 +25,14 @@ class IntroductionPage extends StatelessWidget {
             width: ScreenUtil().setWidth(45),
             margin: EdgeInsets.only(right: 10),
             child: InkWell(
-              onTap: () {},
+              onTap: () {
+                Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => BlocProvider<DashboardCubit>(
+                            create: (context) => DashboardCubit(),
+                            child: Dashboard())));
+              },
               child: Text(
                 'Skip',
                 style: TextStyle(
@@ -126,7 +133,6 @@ class IntroductionPage extends StatelessWidget {
                                 duration: Duration(milliseconds: 500),
                                 curve: Curves.ease);
                           } else {
-                            print("Go to dashboard!");
                             Navigator.pushReplacement(
                                 context,
                                 MaterialPageRoute(
