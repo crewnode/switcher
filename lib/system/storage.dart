@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:io';
 import 'dart:convert';
+import 'package:flutter/services.dart';
 import 'package:global_configuration/global_configuration.dart';
 import 'package:path_provider/path_provider.dart';
 import 'logger.dart' as Logger;
@@ -16,7 +17,7 @@ class Storage {
 
   Future<File> get _localFile async {
     final path = await _localPath;
-    return new File("$path/cached.json");
+    return new File("$path/crewnode.json");
   }
 
   Future<Map> readConfig() async {
@@ -34,18 +35,28 @@ class Storage {
         throw new Exception("Invalid configuraton file.");
       }
 
+      Logger.debug("Loaded config file:");
+      Logger.debug(configAsMap.toString());
+      GlobalConfiguration().loadFromMap(configAsMap);
+
       return configAsMap;
     } catch (e) {
-      // If unable to decode, read from the default asset
-      Logger.debug(
-          "Unable to read configuration file, loading default asset instead.",
+      // If unable to decode, write a new example configuration file
+      Logger.debug("Unable to read configuration file, creating a fresh one.",
           Logger.DEBUG_ERROR);
-      return (await GlobalConfiguration().loadFromAsset("default")).appConfig;
+      await this.resetConfig();
+      return await this.readConfig();
     }
   }
 
   Future<File> writeConfig(Map<String, dynamic> data) async {
     final file = await _localFile;
     return file.writeAsString(json.encode(data));
+  }
+
+  Future<File> resetConfig() async {
+    final file = await _localFile;
+    return file.writeAsString(
+        await rootBundle.loadString('assets/settings/crewnode.json'));
   }
 }

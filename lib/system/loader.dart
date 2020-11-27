@@ -3,12 +3,22 @@ import 'definitions.dart' as Config;
 import 'logger.dart' as Logger;
 import 'storage.dart';
 
-class Loader {
+class CrewNodeHandler {
+  // Make this class a singleton
+  static final CrewNodeHandler _singleton = CrewNodeHandler._internal();
+  factory CrewNodeHandler() {
+    return _singleton;
+  }
+  CrewNodeHandler._internal();
+
+  // Handlers
   Storage _storage;
 
+  // Initialisers
   Future<bool> initLoad() async {
     // Initialise our storage
-    this._initStorage();
+    this._initStorage(resetConfig: false);
+    this._storage.readConfig();
 
     // Load our configuration file
     // TODO: Implement server listing API
@@ -45,8 +55,24 @@ class Loader {
     return true;
   }
 
-  Storage _initStorage() {
+  Storage _initStorage({bool resetConfig = false}) {
     this._storage = new Storage();
+
+    // Check if we're resetting the configuration file
+    if (resetConfig) {
+      this._storage.resetConfig();
+    }
+
     return this._storage;
+  }
+
+  // Getters
+  Storage getStorage() {
+    return this._storage;
+  }
+
+  Future<Map<String, dynamic>> getConfig() async {
+    Map<String, dynamic> conf = await this._storage.readConfig();
+    return conf;
   }
 }

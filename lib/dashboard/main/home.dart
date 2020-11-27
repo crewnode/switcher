@@ -19,6 +19,7 @@ class HomePage extends StatelessWidget {
                   slivers: <Widget>[
                     SliverAppBar(
                         titleSpacing: 10,
+                        automaticallyImplyLeading: false,
                         backgroundColor: Colors.transparent,
                         title: DashboardAppBar(),
                         pinned: true)

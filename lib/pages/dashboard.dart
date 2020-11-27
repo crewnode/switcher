@@ -9,7 +9,7 @@ import 'package:crewnode_switcher/utils/colours.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class Dashboard extends StatefulWidget {
-  static const String routeName = "/dashboard";
+  static const String routeName = "/";
   Dashboard({Key key}) : super(key: key);
 
   @override

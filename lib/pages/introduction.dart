@@ -1,14 +1,16 @@
 import 'package:crewnode_switcher/blocs/dashboard.dart';
 import 'package:crewnode_switcher/pages/dashboard.dart';
+import 'package:crewnode_switcher/system/loader.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:crewnode_switcher/utils/intro_items.dart';
 import 'package:crewnode_switcher/utils/colours.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:global_configuration/global_configuration.dart';
 
 class IntroductionPage extends StatelessWidget {
-  static const String routeName = "/";
+  static const String routeName = "/intro";
   final _pageViewController = new PageController(initialPage: 0);
 
   @override
@@ -19,13 +21,18 @@ class IntroductionPage extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0.0,
+        automaticallyImplyLeading: false,
         actions: <Widget>[
           Container(
             alignment: Alignment.center,
             width: ScreenUtil().setWidth(45),
             margin: EdgeInsets.only(right: 10),
             child: InkWell(
-              onTap: () {
+              onTap: () async {
+                GlobalConfiguration().updateValue('introComplete', true);
+                await CrewNodeHandler()
+                    .getStorage()
+                    .writeConfig(GlobalConfiguration().appConfig);
                 Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(
@@ -127,12 +134,17 @@ class IntroductionPage extends StatelessWidget {
                         ),
                       ),
                       FlatButton(
-                        onPressed: () {
+                        onPressed: () async {
                           if (index < IntroItems.introData.length - 1) {
                             _pageViewController.animateToPage(index + 1,
                                 duration: Duration(milliseconds: 500),
                                 curve: Curves.ease);
                           } else {
+                            GlobalConfiguration()
+                                .updateValue('introComplete', true);
+                            await CrewNodeHandler()
+                                .getStorage()
+                                .writeConfig(GlobalConfiguration().appConfig);
                             Navigator.pushReplacement(
                                 context,
                                 MaterialPageRoute(
