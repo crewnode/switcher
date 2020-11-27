@@ -42,26 +42,30 @@ class _DashboardState extends State<Dashboard> {
                 BottomNavigationBarItem(
                     icon: Icon(Icons.dashboard),
                     title: Column(children: [
-                      SizedBox(height: 5),
-                      Text('Dashboard', style: TextStyle(fontSize: 10))
+                      SizedBox(height: ScreenUtil().setHeight(5)),
+                      Text('Dashboard',
+                          style: TextStyle(fontSize: ScreenUtil().setSp(10)))
                     ])),
                 BottomNavigationBarItem(
                     icon: Icon(Icons.storage),
                     title: Column(children: [
-                      SizedBox(height: 5),
-                      Text('Servers', style: TextStyle(fontSize: 10))
+                      SizedBox(height: ScreenUtil().setHeight(5)),
+                      Text('Servers',
+                          style: TextStyle(fontSize: ScreenUtil().setSp(10)))
                     ])),
                 BottomNavigationBarItem(
                     icon: Icon(Icons.bookmark),
                     title: Column(children: [
-                      SizedBox(height: 5),
-                      Text('Bookmarks', style: TextStyle(fontSize: 10))
+                      SizedBox(height: ScreenUtil().setHeight(5)),
+                      Text('Bookmarks',
+                          style: TextStyle(fontSize: ScreenUtil().setSp(10)))
                     ])),
                 BottomNavigationBarItem(
                     icon: Icon(Icons.settings),
                     title: Column(children: [
-                      SizedBox(height: 5),
-                      Text('Settings', style: TextStyle(fontSize: 10))
+                      SizedBox(height: ScreenUtil().setHeight(5)),
+                      Text('Settings',
+                          style: TextStyle(fontSize: ScreenUtil().setSp(10)))
                     ])),
               ]),
         ),

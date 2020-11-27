@@ -62,7 +62,7 @@ class IntroductionPage extends StatelessWidget {
               height: ScreenUtil().setHeight(150),
             ),
           ),
-          SizedBox(height: 65),
+          SizedBox(height: ScreenUtil().setHeight(65)),
           Expanded(
             child: Container(
               width: ScreenUtil().setWidth(375),
@@ -79,7 +79,7 @@ class IntroductionPage extends StatelessWidget {
                 itemBuilder: (context, index) {
                   return Column(
                     children: <Widget>[
-                      SizedBox(height: 25),
+                      SizedBox(height: ScreenUtil().setHeight(25)),
                       Text(
                         IntroItems.introData[index]['title'],
                         textAlign: TextAlign.center,
@@ -117,10 +117,10 @@ class IntroductionPage extends StatelessWidget {
                                 Text(IntroItems.introData[indicator]['title'],
                                     style: TextStyle(
                                         color: Colors.grey, fontSize: 10)),
-                                SizedBox(height: 5),
+                                SizedBox(height: ScreenUtil().setHeight(5)),
                                 Container(
-                                  height: 10.0,
-                                  width: 10.0,
+                                  height: ScreenUtil().setHeight(10),
+                                  width: ScreenUtil().setWidth(10),
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(10.0),
                                     color: indicator != index
@@ -166,7 +166,7 @@ class IntroductionPage extends StatelessWidget {
                         ),
                         child: Container(
                           width: ScreenUtil().setWidth(160),
-                          height: 40,
+                          height: ScreenUtil().setHeight(40),
                           alignment: Alignment.center,
                           child: Text(
                             index != IntroItems.introData.length - 1
@@ -180,7 +180,7 @@ class IntroductionPage extends StatelessWidget {
                           ),
                         ),
                       ),
-                      SizedBox(height: 25)
+                      SizedBox(height: ScreenUtil().setHeight(25))
                     ],
                   );
                 },

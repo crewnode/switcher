@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:crewnode_switcher/utils/colours.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class DashboardAppBar extends StatelessWidget {
   const DashboardAppBar({Key key}) : super(key: key);
@@ -10,8 +11,11 @@ class DashboardAppBar extends StatelessWidget {
         height: 50,
         child: Row(
           children: <Widget>[
+            SizedBox(width: ScreenUtil().setWidth(10)),
             Text('CrewNode',
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
+                style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: ScreenUtil().setSp(20))),
             // SizedBox(width: 5.0),
             // Container(
             //   decoration: BoxDecoration(
@@ -33,7 +37,8 @@ class DashboardAppBar extends StatelessWidget {
             Spacer(),
             CircleAvatar(
                 backgroundImage: AssetImage('assets/images/crewnode_icon.png'),
-                backgroundColor: Color(Colours().averageBlue))
+                backgroundColor: Color(Colours().averageBlue)),
+            SizedBox(width: ScreenUtil().setWidth(10))
           ],
         ));
   }
