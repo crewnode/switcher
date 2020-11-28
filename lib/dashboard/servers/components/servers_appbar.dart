@@ -14,7 +14,7 @@ class ServersAppBar extends StatelessWidget {
             Text('Servers', style: TextStyle(color: Colors.white)),
             Spacer(),
             Container(
-                width: 120,
+                width: 90,
                 child: Hero(
                   tag: "crewnode-logo",
                   child: Image.asset(

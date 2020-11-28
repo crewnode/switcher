@@ -14,7 +14,7 @@ class SettingsAppBar extends StatelessWidget {
             Text('Settings', style: TextStyle(color: Colors.white)),
             Spacer(),
             Container(
-                width: 120,
+                width: 90,
                 child: Hero(
                   tag: "crewnode-logo",
                   child: Image.asset(
