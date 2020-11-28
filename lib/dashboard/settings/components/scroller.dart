@@ -282,7 +282,7 @@ class SettingList extends StatelessWidget {
           ],
         ),
         SizedBox(height: ScreenUtil().setHeight(2)),
-        Text('(c) 2020 CrewNode',
+        Text('\u00a9 2020 CrewNode',
             style: TextStyle(
                 color: Colors.white12, fontSize: ScreenUtil().setSp(12)))
       ],
