@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:crewnode_switcher/utils/colours.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class BookmarkAppBar extends StatelessWidget {
@@ -12,6 +11,8 @@ class BookmarkAppBar extends StatelessWidget {
         child: Row(
           children: <Widget>[
             SizedBox(width: ScreenUtil().setWidth(10)),
+            Text('Bookmarks', style: TextStyle(color: Colors.white)),
+            Spacer(),
             Container(
                 width: 120,
                 child: Hero(
@@ -22,10 +23,6 @@ class BookmarkAppBar extends StatelessWidget {
                     height: ScreenUtil().setHeight(150),
                   ),
                 )),
-            Spacer(),
-            CircleAvatar(
-                backgroundImage: AssetImage('assets/images/crewnode_icon.png'),
-                backgroundColor: Color(Colours().averageBlue)),
             SizedBox(width: ScreenUtil().setWidth(10))
           ],
         ));
