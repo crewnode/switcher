@@ -12,10 +12,16 @@ class DashboardAppBar extends StatelessWidget {
         child: Row(
           children: <Widget>[
             SizedBox(width: ScreenUtil().setWidth(10)),
-            Text('CrewNode',
-                style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: ScreenUtil().setSp(20))),
+            Container(
+                width: 120,
+                child: Hero(
+                  tag: "crewnode-logo",
+                  child: Image.asset(
+                    'assets/images/crewnode_text.png', // IntroItems.welcomeData[index]['image'],
+                    width: ScreenUtil().setWidth(326),
+                    height: ScreenUtil().setHeight(150),
+                  ),
+                )),
             // SizedBox(width: 5.0),
             // Container(
             //   decoration: BoxDecoration(

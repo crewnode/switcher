@@ -1,5 +1,5 @@
 import 'package:crewnode_switcher/dashboard/main/components/dashboard_appbar.dart';
-import 'package:crewnode_switcher/dashboard/main/components/set_region.dart';
+import 'package:crewnode_switcher/dashboard/main/components/region_setter.dart';
 import 'package:flutter/material.dart';
 import 'package:crewnode_switcher/utils/colours.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
