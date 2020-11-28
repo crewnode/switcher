@@ -56,6 +56,7 @@ class Storage {
 
   Future<File> resetConfig() async {
     final file = await _localFile;
+    Logger.debug("Configuration has been reset.");
     return file.writeAsString(
         await rootBundle.loadString('assets/settings/crewnode.json'));
   }

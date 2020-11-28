@@ -1,6 +1,8 @@
+import 'package:crewnode_switcher/system/loader.dart';
 import 'package:crewnode_switcher/utils/colours.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class SettingList extends StatelessWidget {
   const SettingList({Key key}) : super(key: key);
@@ -31,26 +33,89 @@ class SettingList extends StatelessWidget {
         ),
         SizedBox(height: ScreenUtil().setHeight(15)),
         GestureDetector(
+            onTap: () {
+              showDialog(
+                  context: context,
+                  builder: (BuildContext diagCtx) {
+                    return SimpleDialog(
+                      title: Text('Are you sure?'),
+                      children: [
+                        Padding(
+                            padding: EdgeInsets.only(
+                              left: ScreenUtil().setSp(15),
+                              right: ScreenUtil().setSp(15),
+                              top: ScreenUtil().setSp(15),
+                            ),
+                            child: Column(
+                              children: [
+                                Text(
+                                  'Clearing the configuration will reset this application back to its default settings.',
+                                  textAlign: TextAlign.center,
+                                ),
+                                SizedBox(height: ScreenUtil().setHeight(25)),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    FlatButton.icon(
+                                        onPressed: () {
+                                          Navigator.of(diagCtx).pop();
+                                        },
+                                        icon: Icon(Icons.cancel),
+                                        color: Colors.transparent,
+                                        textColor: Colors.grey,
+                                        label: Text('Cancel')),
+                                    SizedBox(width: ScreenUtil().setWidth(25)),
+                                    FlatButton.icon(
+                                        onPressed: () {
+                                          CrewNodeHandler()
+                                              .getStorage()
+                                              .resetConfig();
+                                          Navigator.of(diagCtx).pop();
+                                          Fluttertoast.showToast(
+                                            msg:
+                                                'The configuration has been reset.',
+                                            toastLength: Toast.LENGTH_SHORT,
+                                            gravity: ToastGravity.BOTTOM,
+                                            timeInSecForIosWeb: 2,
+                                            backgroundColor:
+                                                Color(Colours().lightBlue),
+                                            textColor: Colors.white,
+                                            fontSize: ScreenUtil().setSp(16),
+                                          );
+                                        },
+                                        icon: Icon(Icons.check),
+                                        color: Colors.green,
+                                        textColor: Colors.white,
+                                        label: Text('Clear')),
+                                  ],
+                                )
+                              ],
+                            ))
+                      ],
+                      // content: Column(children: <Widget>[]),
+                    );
+                  });
+            },
             child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-              Text('Reset configuration',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                  )),
-              Icon(
-                Icons.arrow_forward_ios,
-                color: Colors.grey[100],
-                size: ScreenUtil().setSp(18),
-              )
-            ])),
+                  Text('Reset configuration',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                      )),
+                  Icon(
+                    Icons.arrow_forward_ios,
+                    color: Colors.grey[100],
+                    size: ScreenUtil().setSp(18),
+                  )
+                ])),
         SizedBox(height: ScreenUtil().setHeight(25)),
         GestureDetector(
             child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-              Text('Change Language',
+              Text('Change language',
                   style: TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
@@ -114,22 +179,6 @@ class SettingList extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
               Text('GitHub',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                  )),
-              Icon(
-                Icons.arrow_forward_ios,
-                color: Colors.grey[100],
-                size: ScreenUtil().setSp(18),
-              )
-            ])),
-        SizedBox(height: ScreenUtil().setHeight(25)),
-        GestureDetector(
-            child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-              Text('Terms and Conditions',
                   style: TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
