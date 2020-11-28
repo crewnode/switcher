@@ -166,7 +166,7 @@ class SettingList extends StatelessWidget {
                   toastLength: Toast.LENGTH_SHORT,
                   gravity: ToastGravity.BOTTOM,
                   timeInSecForIosWeb: 2,
-                  backgroundColor: Color(Colours().lightBlue),
+                  backgroundColor: Colors.red,
                   textColor: Colors.white,
                   fontSize: ScreenUtil().setSp(16),
                 );
@@ -198,7 +198,7 @@ class SettingList extends StatelessWidget {
                   toastLength: Toast.LENGTH_SHORT,
                   gravity: ToastGravity.BOTTOM,
                   timeInSecForIosWeb: 2,
-                  backgroundColor: Color(Colours().lightBlue),
+                  backgroundColor: Colors.red,
                   textColor: Colors.white,
                   fontSize: ScreenUtil().setSp(16),
                 );
@@ -230,7 +230,7 @@ class SettingList extends StatelessWidget {
                   toastLength: Toast.LENGTH_SHORT,
                   gravity: ToastGravity.BOTTOM,
                   timeInSecForIosWeb: 2,
-                  backgroundColor: Color(Colours().lightBlue),
+                  backgroundColor: Colors.red,
                   textColor: Colors.white,
                   fontSize: ScreenUtil().setSp(16),
                 );
