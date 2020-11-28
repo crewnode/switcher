@@ -55,52 +55,55 @@ class _ServersPageState extends State<ServersPage>
             onTap: () {
               print("Pressed ${server['uuid']}");
               setState(() {
+                bool valBefore = this.shownServers[server['uuid']];
                 for (String uuid in this.shownServers.keys) {
                   this.shownServers[uuid] = false;
                 }
 
-                this.shownServers[server['uuid']] = true;
+                this.shownServers[server['uuid']] = !valBefore;
               });
             },
-            child: Row(
-              children: [
-                Text(server['name'],
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: this.shownServers[server['uuid']]
-                            ? FontWeight.bold
-                            : FontWeight.normal)),
-                SizedBox(width: ScreenUtil().setWidth(5)),
-                Spacer(),
-                Container(
-                    decoration: BoxDecoration(
-                      color: Color(0xff2b3044),
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 8,
-                      vertical: 4,
-                    ),
-                    child: Row(children: [
-                      Icon(
-                        Icons.person,
-                        color: Colors.white,
-                        size: ScreenUtil().setSp(14),
+            child: Column(children: [
+              Row(
+                children: [
+                  Text(server['name'],
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: this.shownServers[server['uuid']]
+                              ? FontWeight.bold
+                              : FontWeight.normal)),
+                  SizedBox(width: ScreenUtil().setWidth(5)),
+                  Spacer(),
+                  Container(
+                      decoration: BoxDecoration(
+                        color: Color(0xff2b3044),
+                        borderRadius: BorderRadius.circular(20),
                       ),
-                      SizedBox(width: ScreenUtil().setWidth(3)),
-                      Text("${server['players']} / ${server['max_players']}",
-                          style: TextStyle(color: Colors.white, fontSize: 12))
-                    ])),
-              ],
-            )),
-        Visibility(
-            visible: shownServers[server['uuid']],
-            child: Container(
-              child: Row(children: [
-                Text(server['description'],
-                    style: TextStyle(color: Colors.grey)),
-              ]),
-            )),
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 8,
+                        vertical: 4,
+                      ),
+                      child: Row(children: [
+                        Icon(
+                          Icons.person,
+                          color: Colors.white,
+                          size: ScreenUtil().setSp(14),
+                        ),
+                        SizedBox(width: ScreenUtil().setWidth(3)),
+                        Text("${server['players']} / ${server['max_players']}",
+                            style: TextStyle(color: Colors.white, fontSize: 12))
+                      ])),
+                ],
+              ),
+              Visibility(
+                  visible: shownServers[server['uuid']],
+                  child: Container(
+                    child: Row(children: [
+                      Text(server['description'],
+                          style: TextStyle(color: Colors.grey)),
+                    ]),
+                  )),
+            ])),
         Divider(
           color: Color(Colours().averageBlue),
           thickness: 1,
@@ -124,14 +127,20 @@ class _ServersPageState extends State<ServersPage>
             elevation: 0,
             title: ServersAppBar()),
         body: SafeArea(
-            child: Padding(
-                padding: EdgeInsets.all(ScreenUtil().setSp(15)),
-                child: Column(children: [
-                  ...[
-                    ServersTabBar(tabController: this._tabController),
-                    SizedBox(height: ScreenUtil().setHeight(20))
-                  ],
-                  ...getServerData()
-                ]))));
+            child: Column(children: [
+          Padding(
+              padding: EdgeInsets.only(
+                  left: ScreenUtil().setSp(15), right: ScreenUtil().setSp(15)),
+              child: Column(children: [
+                ServersTabBar(tabController: this._tabController)
+              ])),
+          Expanded(
+              child: ListView(
+                  shrinkWrap: true,
+                  physics: const BouncingScrollPhysics(
+                      parent: AlwaysScrollableScrollPhysics()),
+                  padding: EdgeInsets.all(ScreenUtil().setSp(15)),
+                  children: getServerData()))
+        ])));
   }
 }
