@@ -1,0 +1,92 @@
+{
+  "servers": [
+    {
+      "uuid": "abcd",
+      "name": "CrewNode EU",
+      "description": "An official CrewNode server.",
+      "players": 5839,
+      "max_players": 10000,
+      "tags": ["popular", "featured", "crewnode"],
+      "ip": "0.0.0.0",
+      "port": "22023",
+      "nodes": []
+    },
+    {
+      "uuid": "gfds",
+      "name": "CrewNode NAE",
+      "description": "An official CrewNode server.",
+      "players": 9172,
+      "max_players": 10000,
+      "tags": ["popular", "featured", "crewnode"],
+      "ip": "0.0.0.0",
+      "port": "22023",
+      "nodes": []
+    },
+    {
+      "uuid": "bvcx",
+      "name": "CrewNode NAW",
+      "description": "An official CrewNode server.",
+      "players": 3849,
+      "max_players": 10000,
+      "tags": ["popular", "featured", "crewnode", "new"],
+      "ip": "0.0.0.0",
+      "port": "22023",
+      "nodes": []
+    },
+    {
+      "uuid": "stsg",
+      "name": "Skeld",
+      "description": "One of the first public Among Us servers.",
+      "players": 2204,
+      "max_players": 2500,
+      "tags": ["featured", "popular", "skeld.net"],
+      "ip": "0.0.0.0",
+      "port": "22023",
+      "nodes": []
+    },
+    {
+      "uuid": "iods",
+      "name": "Polus",
+      "description": "Yet another server.",
+      "players": 192,
+      "max_players": 200,
+      "tags": ["new"],
+      "ip": "0.0.0.0",
+      "port": "22023",
+      "nodes": []
+    },
+    {
+      "uuid": "qodd",
+      "name": "Crewmate",
+      "description": "Yet another server.",
+      "players": 328,
+      "max_players": 500,
+      "tags": ["new", "popular"],
+      "ip": "0.0.0.0",
+      "port": "22023",
+      "nodes": []
+    },
+    {
+      "uuid": "alsq",
+      "name": "Mira",
+      "description": "Yet another server.",
+      "players": 19,
+      "max_players": 50,
+      "tags": ["new", "low ping"],
+      "ip": "0.0.0.0",
+      "port": "22023",
+      "nodes": []
+    },
+    {
+      "uuid": "bigd",
+      "name": "Impostor",
+      "description": "Yet another server.",
+      "players": 23,
+      "max_players": 25,
+      "tags": ["new"],
+      "ip": "0.0.0.0",
+      "port": "22023",
+      "nodes": []
+    }
+  ]
+}

@@ -42,3 +42,4 @@ flutter:
   assets:
     - assets/images/
     - assets/settings/crewnode.json
+    - assets/dummy-api/
