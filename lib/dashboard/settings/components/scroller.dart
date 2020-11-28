@@ -250,6 +250,41 @@ class SettingList extends StatelessWidget {
                     size: ScreenUtil().setSp(18),
                   )
                 ])),
+        SizedBox(height: ScreenUtil().setHeight(50)),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Text('Created by ',
+                style: TextStyle(
+                    color: Colors.white24, fontSize: ScreenUtil().setSp(12))),
+            GestureDetector(
+                onTap: () async {
+                  const url = 'https://github.com/reecebenson';
+                  if (await canLaunch(url)) {
+                    await launch(url);
+                  } else {
+                    Fluttertoast.showToast(
+                      msg: 'Visit www.reece.biz for more information.',
+                      toastLength: Toast.LENGTH_LONG,
+                      gravity: ToastGravity.BOTTOM,
+                      timeInSecForIosWeb: 2,
+                      backgroundColor: Color(Colours().lightBlue),
+                      textColor: Colors.white,
+                      fontSize: ScreenUtil().setSp(16),
+                    );
+                  }
+                },
+                child: Text('Reece Benson',
+                    style: TextStyle(
+                        color: Colors.white30,
+                        fontSize: ScreenUtil().setSp(12),
+                        fontWeight: FontWeight.bold))),
+          ],
+        ),
+        SizedBox(height: ScreenUtil().setHeight(2)),
+        Text('(c) 2020 CrewNode',
+            style: TextStyle(
+                color: Colors.white12, fontSize: ScreenUtil().setSp(12)))
       ],
     ));
   }
