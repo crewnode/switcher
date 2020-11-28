@@ -13,14 +13,14 @@ class HomePage extends StatelessWidget {
     return Scaffold(
         backgroundColor: Color(Colours().darkBlue),
         appBar: AppBar(
-            titleSpacing: ScreenUtil().setWidth(10),
+            titleSpacing: ScreenUtil().setSp(10),
             automaticallyImplyLeading: false,
             backgroundColor: Color(Colours().darkBlue),
             elevation: 0,
             title: DashboardAppBar()),
         body: SafeArea(
             child: Padding(
-                padding: EdgeInsets.all(ScreenUtil().setWidth(15)),
+                padding: EdgeInsets.all(ScreenUtil().setSp(15)),
                 child: Column(
                   children: [RegionSetter()],
                 ))));
