@@ -1,4 +1,4 @@
-import 'package:crewnode_switcher/dashboard/servers/components/servers_appbar.dart';
+import 'package:crewnode_switcher/dashboard/servers/components/appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:crewnode_switcher/utils/colours.dart';
