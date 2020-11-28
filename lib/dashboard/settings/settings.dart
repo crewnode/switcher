@@ -1,3 +1,4 @@
+import 'package:crewnode_switcher/dashboard/settings/components/scroller.dart';
 import 'package:crewnode_switcher/dashboard/settings/components/settings_appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -21,7 +22,7 @@ class SettingsPage extends StatelessWidget {
             child: Padding(
                 padding: EdgeInsets.all(ScreenUtil().setSp(15)),
                 child: Column(
-                  children: [],
+                  children: [SettingList()],
                 ))));
   }
 }
