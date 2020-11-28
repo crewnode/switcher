@@ -3,6 +3,7 @@ import 'package:crewnode_switcher/utils/colours.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class SettingList extends StatelessWidget {
   const SettingList({Key key}) : super(key: key);
@@ -112,20 +113,32 @@ class SettingList extends StatelessWidget {
                 ])),
         SizedBox(height: ScreenUtil().setHeight(25)),
         GestureDetector(
+            onTap: () {
+              // TODO: Implement
+              Fluttertoast.showToast(
+                msg: 'We do not currently support other languages.',
+                toastLength: Toast.LENGTH_SHORT,
+                gravity: ToastGravity.BOTTOM,
+                timeInSecForIosWeb: 2,
+                backgroundColor: Color(Colours().lightBlue),
+                textColor: Colors.white,
+                fontSize: ScreenUtil().setSp(16),
+              );
+            },
             child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-              Text('Change language',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                  )),
-              Icon(
-                Icons.arrow_forward_ios,
-                color: Colors.grey[100],
-                size: ScreenUtil().setSp(18),
-              )
-            ])),
+                  Text('Change language',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                      )),
+                  Icon(
+                    Icons.arrow_forward_ios,
+                    color: Colors.grey[100],
+                    size: ScreenUtil().setSp(18),
+                  )
+                ])),
         SizedBox(height: ScreenUtil().setHeight(50)),
         Row(children: <Widget>[
           Image.asset('assets/images/crewnode_icon.png',
@@ -143,52 +156,100 @@ class SettingList extends StatelessWidget {
         ),
         SizedBox(height: ScreenUtil().setHeight(25)),
         GestureDetector(
+            onTap: () async {
+              const url = 'https://crewnode.net/app/discord';
+              if (await canLaunch(url)) {
+                await launch(url);
+              } else {
+                Fluttertoast.showToast(
+                  msg: 'Unable to launch browser! :(',
+                  toastLength: Toast.LENGTH_SHORT,
+                  gravity: ToastGravity.BOTTOM,
+                  timeInSecForIosWeb: 2,
+                  backgroundColor: Color(Colours().lightBlue),
+                  textColor: Colors.white,
+                  fontSize: ScreenUtil().setSp(16),
+                );
+              }
+            },
             child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-              Text('Discord',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                  )),
-              Icon(
-                Icons.arrow_forward_ios,
-                color: Colors.grey[100],
-                size: ScreenUtil().setSp(18),
-              )
-            ])),
+                  Text('Discord',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                      )),
+                  Icon(
+                    Icons.arrow_forward_ios,
+                    color: Colors.grey[100],
+                    size: ScreenUtil().setSp(18),
+                  )
+                ])),
         SizedBox(height: ScreenUtil().setHeight(25)),
         GestureDetector(
+            onTap: () async {
+              const url = 'https://crewnode.net/';
+              if (await canLaunch(url)) {
+                await launch(url);
+              } else {
+                Fluttertoast.showToast(
+                  msg: 'Unable to launch browser! :(',
+                  toastLength: Toast.LENGTH_SHORT,
+                  gravity: ToastGravity.BOTTOM,
+                  timeInSecForIosWeb: 2,
+                  backgroundColor: Color(Colours().lightBlue),
+                  textColor: Colors.white,
+                  fontSize: ScreenUtil().setSp(16),
+                );
+              }
+            },
             child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-              Text('Website',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                  )),
-              Icon(
-                Icons.arrow_forward_ios,
-                color: Colors.grey[100],
-                size: ScreenUtil().setSp(18),
-              )
-            ])),
+                  Text('Website',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                      )),
+                  Icon(
+                    Icons.arrow_forward_ios,
+                    color: Colors.grey[100],
+                    size: ScreenUtil().setSp(18),
+                  )
+                ])),
         SizedBox(height: ScreenUtil().setHeight(25)),
         GestureDetector(
+            onTap: () async {
+              const url = 'https://crewnode.net/app/github';
+              if (await canLaunch(url)) {
+                await launch(url);
+              } else {
+                Fluttertoast.showToast(
+                  msg: 'Unable to launch browser! :(',
+                  toastLength: Toast.LENGTH_SHORT,
+                  gravity: ToastGravity.BOTTOM,
+                  timeInSecForIosWeb: 2,
+                  backgroundColor: Color(Colours().lightBlue),
+                  textColor: Colors.white,
+                  fontSize: ScreenUtil().setSp(16),
+                );
+              }
+            },
             child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-              Text('GitHub',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                  )),
-              Icon(
-                Icons.arrow_forward_ios,
-                color: Colors.grey[100],
-                size: ScreenUtil().setSp(18),
-              )
-            ])),
+                  Text('GitHub',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                      )),
+                  Icon(
+                    Icons.arrow_forward_ios,
+                    color: Colors.grey[100],
+                    size: ScreenUtil().setSp(18),
+                  )
+                ])),
       ],
     ));
   }
