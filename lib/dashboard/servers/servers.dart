@@ -33,16 +33,24 @@ class _ServersPageState extends State<ServersPage>
     });
   }
 
-  List<Widget> getServerData() {
-    if (this._progressController) {
-      return <Widget>[
-        SizedBox(height: ScreenUtil().setHeight(50)),
-        CircularProgressIndicator(
-          backgroundColor: Color(Colours().averageBlue),
-          valueColor: AlwaysStoppedAnimation<Color>(Color(Colours().lightBlue)),
-        )
-      ];
+  Widget getIndicator() {
+    if (!this._progressController) {
+      return Row();
     }
+
+    return Column(children: [
+      SizedBox(height: ScreenUtil().setHeight(50)),
+      CircularProgressIndicator(
+          backgroundColor: Color(Colours().averageBlue),
+          valueColor:
+              AlwaysStoppedAnimation<Color>(Color(Colours().lightBlue))),
+      SizedBox(height: ScreenUtil().setHeight(25)),
+      Text('Loading', style: TextStyle(color: Color(Colours().lightBlue))),
+    ]);
+  }
+
+  List<Widget> getServerData() {
+    if (this._progressController) return [];
 
     List<Widget> srvs = <Widget>[];
     for (Map<String, dynamic> server in servers['servers']) {
@@ -134,6 +142,7 @@ class _ServersPageState extends State<ServersPage>
               child: Column(children: [
                 ServersTabBar(tabController: this._tabController)
               ])),
+          getIndicator(),
           Expanded(
               child: ListView(
                   shrinkWrap: true,
