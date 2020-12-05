@@ -126,6 +126,9 @@ class _ServersPageState extends State<ServersPage>
   @override
   Widget build(BuildContext context) {
     ScreenUtil.init(context, width: 375, height: 812, allowFontScaling: false);
+
+    // TODO: Possible refactor to
+    // TODO: https://flutterforyou.com/how-to-create-expanding-and-collapsing-header-in-flutter/
     return Scaffold(
         backgroundColor: Color(Colours().darkBlue),
         appBar: AppBar(
