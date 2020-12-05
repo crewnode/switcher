@@ -1,4 +1,4 @@
-package com.example.crewnode_switcher
+package me.reecebenson.crewnode_switcher
 
 import io.flutter.embedding.android.FlutterActivity
 
